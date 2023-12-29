@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.canvas.Canvas?>
+
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="anchorPane" xmlns:fx="http://javafx.com/fxml" fx:controller="com.cgvsu.GuiController">
+    <MenuBar>
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#onOpenModelMenuItemClick" text="Load Model">
+            <accelerator>
+                <KeyCodeCombination alt="UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" code="F"/>
+            </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#saveModelMenuItemClick" text="Upload Model">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" code="F"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Camera Options">
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraForward" text="Forward">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="UP"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraBackward" text="Backward">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="DOWN"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraLeft" text="Left">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="LEFT"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraRight" text="Right">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="RIGHT"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraUp" text="Up">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="W"/>
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#handleCameraDown" text="Down">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" control="UP" meta="UP" shift="UP" shortcut="UP" code="S"/>
+                </accelerator>
+            </MenuItem>
+        </Menu>
+        <Menu mnemonicParsing="false" text="View">
+            <CheckMenuItem mnemonicParsing="false" onAction="#loadStructure" selected="false" text="Рисовать сетку">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </CheckMenuItem>
+            <CheckMenuItem mnemonicParsing="false" onAction="#loadLight" selected="false" text="Использовать освещение">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </CheckMenuItem>
+            <CheckMenuItem mnemonicParsing="false" onAction="#loadTexture" selected="false" text="Использовать текстуру">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </CheckMenuItem>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Camera change">
+            <MenuItem mnemonicParsing="false" onAction="#addCamera" text="add camera">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="I" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#deleteCamera" text="delete camera">
+                <accelerator>
+                    <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                </accelerator>
+            </MenuItem>
+        </Menu>
+    </MenuBar>
+    <Label layoutX="477.0" layoutY="1.0" prefHeight="23.0" prefWidth="115.0" text="Choosing Model" textFill="#001899" textOverrun="CLIP" wrapText="true">
+        <font>
+            <Font name="Impact" size="17.0" />
+        </font>
+    </Label>
+    <ComboBox fx:id="chooseModel" layoutX="470.0" layoutY="25.0" onAction="#choosingActualModel" prefHeight="18.0" prefWidth="128.0" styleClass="combo-box" />
+    <Label layoutX="657.0" layoutY="1.0" prefHeight="23.0" prefWidth="115.0" text="Camera" textFill="#001899"
+           textOverrun="CLIP" wrapText="true">
+        <font>
+            <Font name="Impact" size="17.0" />
+        </font>
+    </Label>
+    <ComboBox fx:id="chooseCamera" layoutX="650.0" layoutY="25.0" onAction="#choosingCamera" prefHeight="20.0" prefWidth="128.0" styleClass="combo-box" />
+    <Label layoutX="39.0" layoutY="54.0" />
+    <Label layoutX="92.0" layoutY="77.0" />
+    <Canvas fx:id="canvas" height="765.0" layoutY="135.0" width="1600" AnchorPane.topAnchor="30.0" />
+
+    <Label layoutX="770.0" layoutY="645.0" prefHeight="23.0" prefWidth="90.0" text="X:" textOverrun="CLIP" wrapText="true" />
+    <Label layoutX="850.0" layoutY="645.0" prefHeight="23.0" prefWidth="90.0" text="Y:" textOverrun="CLIP" wrapText="true" />
+    <Label layoutX="940.0" layoutY="645.0" prefHeight="23.0" prefWidth="90.0" text="Z:" textOverrun="CLIP" wrapText="true" />
+
+    <Label layoutX="700.0" layoutY="665.0" prefHeight="23.0" prefWidth="90.0" text="Масштаб" textOverrun="CLIP" wrapText="true" />
+    <Label layoutX="700.0" layoutY="695.0" prefHeight="23.0" prefWidth="90.0" text="Поворот" textOverrun="CLIP" wrapText="true" />
+    <Label layoutX="700.0" layoutY="725.0" prefHeight="23.0" prefWidth="90.0" text="Перенос" textOverrun="CLIP" wrapText="true" />
+
+    <TextField fx:id="scaleY" layoutX="840.0" layoutY="665.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="scaleX" layoutX="755.0" layoutY="665.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="scaleZ" layoutX="925.0" layoutY="665.0" prefHeight="26.0" prefWidth="79.0" />
+
+    <TextField fx:id="rotateY" layoutX="840.0" layoutY="695.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="rotateX" layoutX="755.0" layoutY="695.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="rotateZ" layoutX="925.0" layoutY="695.0" prefHeight="26.0" prefWidth="79.0" />
+
+    <TextField fx:id="translateY" layoutX="840.0" layoutY="725.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="translateX" layoutX="755.0" layoutY="725.0" prefHeight="26.0" prefWidth="79.0" />
+    <TextField fx:id="translateZ" layoutX="925.0" layoutY="725.0" prefHeight="26.0" prefWidth="79.0" />
+
+    <Button layoutX="906.0" layoutY="753.0" onAction="#onClick" prefHeight="25.0" prefWidth="90.0" text="Применить" />
+    <Button layoutX="770.0" layoutY="753.0" onAction="#oldModel" prefHeight="25.0" prefWidth="125.0" text="Исходная модель" />
+
+
+</AnchorPane>
